@@ -1,0 +1,161 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Flutter UI\\TradeTrace\\TradeTrack.AdminPanel\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C959E215-2C50-4973-82EC-1590AA294384}|TradeTrack.AdminPanel\\TradeTrack.AdminPanel.csproj|c:\\flutter ui\\tradetrace\\tradetrack.adminpanel\\tradetrack.adminpanel\\views\\salesreps\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C959E215-2C50-4973-82EC-1590AA294384}|TradeTrack.AdminPanel\\TradeTrack.AdminPanel.csproj|solutionrelative:tradetrack.adminpanel\\views\\salesreps\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C959E215-2C50-4973-82EC-1590AA294384}|TradeTrack.AdminPanel\\TradeTrack.AdminPanel.csproj|c:\\flutter ui\\tradetrace\\tradetrack.adminpanel\\tradetrack.adminpanel\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C959E215-2C50-4973-82EC-1590AA294384}|TradeTrack.AdminPanel\\TradeTrack.AdminPanel.csproj|solutionrelative:tradetrack.adminpanel\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C959E215-2C50-4973-82EC-1590AA294384}|TradeTrack.AdminPanel\\TradeTrack.AdminPanel.csproj|c:\\flutter ui\\tradetrace\\tradetrack.adminpanel\\tradetrack.adminpanel\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C959E215-2C50-4973-82EC-1590AA294384}|TradeTrack.AdminPanel\\TradeTrack.AdminPanel.csproj|solutionrelative:tradetrack.adminpanel\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C959E215-2C50-4973-82EC-1590AA294384}|TradeTrack.AdminPanel\\TradeTrack.AdminPanel.csproj|c:\\flutter ui\\tradetrace\\tradetrack.adminpanel\\tradetrack.adminpanel\\services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C959E215-2C50-4973-82EC-1590AA294384}|TradeTrack.AdminPanel\\TradeTrack.AdminPanel.csproj|solutionrelative:tradetrack.adminpanel\\services\\apiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C959E215-2C50-4973-82EC-1590AA294384}|TradeTrack.AdminPanel\\TradeTrack.AdminPanel.csproj|c:\\flutter ui\\tradetrace\\tradetrack.adminpanel\\tradetrack.adminpanel\\controllers\\salesrepscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C959E215-2C50-4973-82EC-1590AA294384}|TradeTrack.AdminPanel\\TradeTrack.AdminPanel.csproj|solutionrelative:tradetrack.adminpanel\\controllers\\salesrepscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Flutter UI\\TradeTrace\\TradeTrack.AdminPanel\\TradeTrack.AdminPanel\\Models\\OrderViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TradeTrack.AdminPanel\\Models\\OrderViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Flutter UI\\TradeTrace\\TradeTrack.AdminPanel\\TradeTrack.AdminPanel\\Models\\SalesRepDetailsViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TradeTrack.AdminPanel\\Models\\SalesRepDetailsViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:702410070:0:{83107a3e-496a-485e-b455-16ddb978e55e}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Flutter UI\\TradeTrace\\TradeTrack.AdminPanel\\TradeTrack.AdminPanel\\Views\\SalesReps\\Details.cshtml",
+              "RelativeDocumentMoniker": "TradeTrack.AdminPanel\\Views\\SalesReps\\Details.cshtml",
+              "ToolTip": "C:\\Flutter UI\\TradeTrace\\TradeTrack.AdminPanel\\TradeTrack.AdminPanel\\Views\\SalesReps\\Details.cshtml",
+              "RelativeToolTip": "TradeTrack.AdminPanel\\Views\\SalesReps\\Details.cshtml",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAAAHYAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-18T14:22:27.245Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SalesRepsController.cs",
+              "DocumentMoniker": "C:\\Flutter UI\\TradeTrace\\TradeTrack.AdminPanel\\TradeTrack.AdminPanel\\Controllers\\SalesRepsController.cs",
+              "RelativeDocumentMoniker": "TradeTrack.AdminPanel\\Controllers\\SalesRepsController.cs",
+              "ToolTip": "C:\\Flutter UI\\TradeTrace\\TradeTrack.AdminPanel\\TradeTrack.AdminPanel\\Controllers\\SalesRepsController.cs",
+              "RelativeToolTip": "TradeTrack.AdminPanel\\Controllers\\SalesRepsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAxwLgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T14:22:19.955Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "OrderViewModel.cs",
+              "DocumentMoniker": "C:\\Flutter UI\\TradeTrace\\TradeTrack.AdminPanel\\TradeTrack.AdminPanel\\Models\\OrderViewModel.cs",
+              "RelativeDocumentMoniker": "TradeTrack.AdminPanel\\Models\\OrderViewModel.cs",
+              "ToolTip": "C:\\Flutter UI\\TradeTrace\\TradeTrack.AdminPanel\\TradeTrack.AdminPanel\\Models\\OrderViewModel.cs",
+              "RelativeToolTip": "TradeTrack.AdminPanel\\Models\\OrderViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T14:22:11.3Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SalesRepDetailsViewModel.cs",
+              "DocumentMoniker": "C:\\Flutter UI\\TradeTrace\\TradeTrack.AdminPanel\\TradeTrack.AdminPanel\\Models\\SalesRepDetailsViewModel.cs",
+              "RelativeDocumentMoniker": "TradeTrack.AdminPanel\\Models\\SalesRepDetailsViewModel.cs",
+              "ToolTip": "C:\\Flutter UI\\TradeTrace\\TradeTrack.AdminPanel\\TradeTrack.AdminPanel\\Models\\SalesRepDetailsViewModel.cs",
+              "RelativeToolTip": "TradeTrack.AdminPanel\\Models\\SalesRepDetailsViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T14:22:06.674Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Flutter UI\\TradeTrace\\TradeTrack.AdminPanel\\TradeTrack.AdminPanel\\Program.cs",
+              "RelativeDocumentMoniker": "TradeTrack.AdminPanel\\Program.cs",
+              "ToolTip": "C:\\Flutter UI\\TradeTrace\\TradeTrack.AdminPanel\\TradeTrack.AdminPanel\\Program.cs",
+              "RelativeToolTip": "TradeTrack.AdminPanel\\Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAoAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-16T14:02:45.284Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Flutter UI\\TradeTrace\\TradeTrack.AdminPanel\\TradeTrack.AdminPanel\\appsettings.json",
+              "RelativeDocumentMoniker": "TradeTrack.AdminPanel\\appsettings.json",
+              "ToolTip": "C:\\Flutter UI\\TradeTrace\\TradeTrack.AdminPanel\\TradeTrack.AdminPanel\\appsettings.json",
+              "RelativeToolTip": "TradeTrack.AdminPanel\\appsettings.json",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAAABAAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-16T10:59:08.059Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ApiService.cs",
+              "DocumentMoniker": "C:\\Flutter UI\\TradeTrace\\TradeTrack.AdminPanel\\TradeTrack.AdminPanel\\Services\\ApiService.cs",
+              "RelativeDocumentMoniker": "TradeTrack.AdminPanel\\Services\\ApiService.cs",
+              "ToolTip": "C:\\Flutter UI\\TradeTrace\\TradeTrack.AdminPanel\\TradeTrack.AdminPanel\\Services\\ApiService.cs",
+              "RelativeToolTip": "TradeTrack.AdminPanel\\Services\\ApiService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T10:59:17.46Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

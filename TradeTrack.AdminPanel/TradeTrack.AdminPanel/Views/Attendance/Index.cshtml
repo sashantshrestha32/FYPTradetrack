@@ -1,0 +1,327 @@
+﻿@model TradeTrack.AdminPanel.Models.AttendanceListViewModel
+@{
+    ViewData["Title"] = "Attendance Records";
+}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Attendance Records</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <button type="button" class="btn btn-sm btn-outline-primary" id="refreshBtn">
+            <i class="bi bi-arrow-clockwise"></i> Refresh
+        </button>
+    </div>
+</div>
+
+<!-- Filters -->
+<div class="card mb-4">
+    <div class="card-body">
+        <form method="get" class="row g-3">
+            <div class="col-md-4">
+                <label for="dateFilter" class="form-label">Date</label>
+                <input type="date" class="form-control" id="dateFilter" name="date"
+                       value="@(Model.DateFilter?.ToString("yyyy-MM-dd") ?? DateTime.Today.ToString("yyyy-MM-dd"))" />
+            </div>
+            <div class="col-md-4">
+                <label for="salesRepFilter" class="form-label">Sales Representative</label>
+                <select class="form-control" id="salesRepFilter" name="salesRepId">
+                    <option value="">All Sales Reps</option>
+                    <!-- Options will be loaded via AJAX -->
+                </select>
+            </div>
+            <div class="col-md-4 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary me-2">
+                    <i class="bi bi-funnel"></i> Filter
+                </button>
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i class="bi bi-x-circle"></i> Clear
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Stats -->
+<div class="row mb-4" id="attendanceStats">
+    <div class="col-md-3">
+        <div class="card bg-light">
+            <div class="card-body text-center">
+                <h6 class="text-muted">TODAY'S CHECK-INS</h6>
+                <h3 id="todayCheckins">0</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-light">
+            <div class="card-body text-center">
+                <h6 class="text-muted">ACTIVE NOW</h6>
+                <h3 id="activeNow">0</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-light">
+            <div class="card-body text-center">
+                <h6 class="text-muted">AVG HOURS</h6>
+                <h3 id="avgHours">0.0</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-light">
+            <div class="card-body text-center">
+                <h6 class="text-muted">PENDING CHECK-OUTS</h6>
+                <h3 id="pendingCheckouts">0</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Attendance Table -->
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Sales Representative</th>
+                        <th>Check-In Time</th>
+                        <th>Check-Out Time</th>
+                        <th>Duration</th>
+                        <th>Location</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var attendance in Model.Attendances)
+                    {
+                        <tr>
+                            <td>@attendance.Id</td>
+                            <td>
+                                <strong>@attendance.SalesRepName</strong><br>
+                                <small class="text-muted">ID: @attendance.SalesRepId</small>
+                            </td>
+                            <td>
+                                @attendance.CheckIn.ToString("dd MMM yyyy HH:mm")<br>
+                                <small class="text-muted">@attendance.CheckIn.ToString("hh:mm tt")</small>
+                            </td>
+                            <td>
+                                @if (attendance.CheckOut.HasValue)
+                                {
+                                    <span>@attendance.CheckOut.Value.ToString("dd MMM yyyy HH:mm")</span>
+                            
+                                    <br>
+                                    <small class="text-muted">@attendance.CheckOut.Value.ToString("hh:mm tt")</small>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning">Still Active</span>
+                                }
+                            </td>
+                            <td>
+                                @if (attendance.HoursWorked.HasValue)
+                                {
+                                    <span class="badge @(attendance.HoursWorked.Value >= 8 ? "bg-success" : "bg-info")">
+                                        @attendance.HoursWorked.Value.ToString("0.0") hrs
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">--</span>
+                                }
+                            </td>
+                            <td>
+                                @if (!string.IsNullOrEmpty(attendance.LocationAddress))
+                                {
+                                    <small>@attendance.LocationAddress</small>
+                            
+                                    <br>
+                                    <small class="text-muted">
+                                        @attendance.Latitude.ToString(), @attendance.Longitude.ToString()
+                                    </small>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">No location</span>
+                                }
+                            </td>
+                            <td>
+                                <a asp-action="Details" asp-route-id="@attendance.Id" class="btn btn-sm btn-outline-info">
+                                    <i class="bi bi-eye"></i> View
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Live Attendance -->
+<div class="card mt-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0"><i class="bi bi-clock"></i> Today's Live Attendance</h5>
+        <span class="badge bg-success" id="liveBadge">Live</span>
+    </div>
+    <div class="card-body">
+        <div id="liveAttendance" class="row">
+            <!-- Live attendance will be loaded here -->
+            <div class="col-12 text-center">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading live attendance...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Initialize DataTable
+            $('.data-table').DataTable({
+                destroy:true,
+                pageLength: 20,
+                responsive: true,
+                order: [[2, 'desc']] // Sort by check-in time descending
+            });
+
+            // Load sales reps for filter
+            loadSalesReps();
+
+            // Load attendance stats
+            loadAttendanceStats();
+
+            // Load live attendance
+            loadLiveAttendance();
+
+            // Refresh button
+            $('#refreshBtn').click(function() {
+                loadAttendanceStats();
+                loadLiveAttendance();
+            });
+
+            // Auto-refresh every 30 seconds
+            setInterval(function() {
+                loadLiveAttendance();
+            }, 30000);
+        });
+
+        function loadSalesReps() {
+            $.ajax({
+                url: '@Url.Action("GetSalesRepsForFilter", "Attendance")',
+                type: 'GET',
+                success: function(salesReps) {
+                    const select = $('#salesRepFilter');
+                    select.empty();
+                    select.append('<option value="">All Sales Reps</option>');
+
+                    salesReps.forEach(function(rep) {
+                        const selected = rep.id == @(Model.SalesRepIdFilter?.ToString() ?? "null") ? 'selected' : '';
+                        select.append(`<option value="${rep.id}" ${selected}>${rep.name}</option>`);
+                    });
+                }
+            });
+        }
+
+        function loadAttendanceStats() {
+            const date = $('#dateFilter').val();
+
+            $.ajax({
+                url: '@Url.Action("GetAttendanceStats", "Attendance")',
+                type: 'GET',
+                data: { date: date },
+                success: function(stats) {
+                    $('#todayCheckins').text(stats.todayCheckins);
+                    $('#activeNow').text(stats.activeNow);
+                    $('#avgHours').text(stats.avgHours.toFixed(1));
+                    $('#pendingCheckouts').text(stats.pendingCheckouts);
+                },
+                error: function() {
+                    // Calculate from table data
+                    const todayCheckins = @Model.Attendances.Count(a => a.CheckIn.Date == DateTime.Today);
+                    const activeNow = @Model.Attendances.Count(a => !a.CheckOut.HasValue);
+                    const pendingCheckouts = @Model.Attendances.Count(a => !a.CheckOut.HasValue && a.CheckIn.Date == DateTime.Today);
+
+                    let totalHours = 0;
+                    let count = 0;
+                    @foreach (var att in Model.Attendances.Where(a => a.HoursWorked.HasValue))
+                    {
+                            @:totalHours += @att.HoursWorked.Value;
+                            @:count++;
+                    }
+                    const avgHours = count > 0 ? totalHours / count : 0;
+
+                    $('#todayCheckins').text(todayCheckins);
+                    $('#activeNow').text(activeNow);
+                    $('#avgHours').text(avgHours.toFixed(1));
+                    $('#pendingCheckouts').text(pendingCheckouts);
+                }
+            });
+        }
+
+        function loadLiveAttendance() {
+            $.ajax({
+                url: '@Url.Action("GetLiveAttendance", "Attendance")',
+                type: 'GET',
+                success: function(attendance) {
+                    if (attendance.length > 0) {
+                        let html = '';
+                        attendance.forEach(function(att) {
+                            const hours = att.hoursWorked ? att.hoursWorked.toFixed(1) : '--';
+                            const status = att.checkOut ?
+                                `<span class="badge bg-success">Checked Out</span>` :
+                                `<span class="badge bg-warning pulse">Active Now</span>`;
+
+                            html += `
+                                <div class="col-md-6 col-lg-4 mb-3">
+                                    <div class="card border-${att.checkOut ? 'secondary' : 'primary'}">
+                                        <div class="card-body">
+                                            <h6 class="card-title">${att.salesRepName}</h6>
+                                            <p class="card-text">
+                                                <small><strong>Check-in:</strong> ${att.checkInTime}</small><br>
+                                                ${att.checkOut ?
+                                                    `<small><strong>Check-out:</strong> ${att.checkOutTime}</small><br>` :
+                                                    ''}
+                                                <small><strong>Duration:</strong> ${hours} hours</small><br>
+                                                <small><strong>Status:</strong> ${status}</small>
+                                            </p>
+                                            ${att.location ? `<small class="text-muted"><i class="bi bi-geo-alt"></i> ${att.location}</small>` : ''}
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                        $('#liveAttendance').html(html);
+                    } else {
+                        $('#liveAttendance').html('<div class="col-12 text-center"><p class="text-muted">No active attendance records found.</p></div>');
+                    }
+                },
+                error: function() {
+                    $('#liveAttendance').html('<div class="col-12 text-center"><p class="text-danger">Failed to load live attendance.</p></div>');
+                }
+            });
+        }
+    </script>
+
+    <style>
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @@keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+}

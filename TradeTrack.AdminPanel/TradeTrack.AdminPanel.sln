@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36717.8 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TradeTrack.AdminPanel", "TradeTrack.AdminPanel\TradeTrack.AdminPanel.csproj", "{C959E215-2C50-4973-82EC-1590AA294384}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C959E215-2C50-4973-82EC-1590AA294384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C959E215-2C50-4973-82EC-1590AA294384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C959E215-2C50-4973-82EC-1590AA294384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C959E215-2C50-4973-82EC-1590AA294384}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {39E4E99A-84FD-40A3-A765-FC7D4A8B551C}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,194 @@
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using TradeTrack.AdminPanel.Models;
+using TradeTrack.AdminPanel.Services;
+
+namespace TradeTrack.AdminPanel.Controllers
+{
+    [Authorize(Roles = "Admin")]
+    public class SalesRepsController : Controller
+    {
+        private readonly IApiService _apiService;
+        private readonly IAuthService _authService;
+
+        public SalesRepsController(IApiService apiService, IAuthService authService)
+        {
+            _apiService = apiService;
+            _authService = authService;
+        }
+
+        public async Task<IActionResult> Index(int page = 1, int pageSize = 10)
+        {
+            var token = _authService.GetToken(HttpContext);
+            var salesReps = await _apiService.GetAsync<List<SalesRepViewModel>>($"salesreps?page={page}&pageSize={pageSize}", token);
+
+            var viewModel = new SalesRepListViewModel
+            {
+                SalesReps = salesReps ?? new List<SalesRepViewModel>(),
+                Page = page,
+                PageSize = pageSize,
+                TotalCount = salesReps?.Count ?? 0
+            };
+
+            return View(viewModel);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetSalesRepStats()
+        {
+            try
+            {
+                var token = _authService.GetToken(HttpContext);
+                var dashboard = await _apiService.GetAsync<DashboardViewModel>("reports/summary", token);
+
+                var salesReps = await _apiService.GetAsync<List<SalesRepViewModel>>("salesreps", token);
+                var totalOrders = salesReps?.Sum(r => r.TotalOrders) ?? 0;
+                var totalSales = salesReps?.Sum(r => r.TotalSales) ?? 0;
+
+                return Json(new
+                {
+                    totalReps = dashboard?.TotalSalesReps ?? 0,
+                    activeToday = dashboard?.TodayCheckins ?? 0,
+                    totalOrders = totalOrders,
+                    totalSales = totalSales
+                });
+            }
+            catch
+            {
+                return Json(new
+                {
+                    totalReps = 0,
+                    activeToday = 0,
+                    totalOrders = 0,
+                    totalSales = 0
+                });
+            }
+        }
+        public IActionResult Create()
+        {
+            return View(new SalesRepViewModel());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(SalesRepViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var token = _authService.GetToken(HttpContext);
+            var result = await _apiService.PostAsync<SalesRepViewModel>("salesreps", model, token);
+
+            if (result != null)
+            {
+                TempData["SuccessMessage"] = "Sales representative created successfully!";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError(string.Empty, "Failed to create sales representative.");
+            return View(model);
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var token = _authService.GetToken(HttpContext);
+            var salesRep = await _apiService.GetAsync<SalesRepViewModel>($"salesreps/{id}", token);
+
+            if (salesRep == null)
+            {
+                return NotFound();
+            }
+
+            // Don't show password fields in edit
+            salesRep.Password = string.Empty;
+            salesRep.ConfirmPassword = string.Empty;
+
+            return View(salesRep);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, SalesRepViewModel model)
+        {
+            if (id != model.Id)
+            {
+                return BadRequest();
+            }
+
+            var token = _authService.GetToken(HttpContext);
+            var result = await _apiService.PutAsync<SalesRepViewModel>($"salesreps/{id}", model, token);
+
+            if (result != null)
+            {
+                TempData["SuccessMessage"] = "Sales representative updated successfully!";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError(string.Empty, "Failed to update sales representative.");
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var token = _authService.GetToken(HttpContext);
+            var success = await _apiService.DeleteAsync($"salesreps/{id}", token);
+
+            if (success)
+            {
+                TempData["SuccessMessage"] = "Sales representative deleted successfully!";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Failed to delete sales representative.";
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var token = _authService.GetToken(HttpContext);
+            var salesRep = await _apiService.GetAsync<SalesRepViewModel>($"salesreps/{id}", token);
+
+            if (salesRep == null)
+            {
+                return NotFound();
+            }
+
+            // Fetch orders for this sales rep
+            var orders = await _apiService.GetAsync<List<OrderViewModel>>($"orders/salesrep/{id}", token) ?? new List<OrderViewModel>();
+            
+            var viewModel = new SalesRepDetailsViewModel
+            {
+                SalesRep = salesRep,
+                Orders = orders
+            };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ToggleStatus(int id)
+        {
+            var token = _authService.GetToken(HttpContext);
+            var success = await _apiService.PostAsync<object>($"salesreps/{id}/toggle-status", new { }, token);
+
+            if (success != null)
+            {
+                TempData["SuccessMessage"] = "Status updated successfully!";
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Failed to update status.";
+            }
+
+            return RedirectToAction("Index");
+        }
+    }
+}
