@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LxmgV/FRpuo=",
+  "dgSpecHash": "kZodETaUDmk=",
   "success": true,
-  "projectFilePath": "D:\\FYP\\TradeTrace\\TradeTrace\\TradeTrack.AdminPanel\\TradeTrack.AdminPanel\\TradeTrack.AdminPanel.csproj",
+  "projectFilePath": "D:\\FYP\\git\\trade\\TradeTrack.AdminPanel\\TradeTrack.AdminPanel\\TradeTrack.AdminPanel.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
